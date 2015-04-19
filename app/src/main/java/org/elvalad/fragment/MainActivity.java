@@ -1,13 +1,22 @@
 package org.elvalad.fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends Activity {
@@ -16,6 +25,7 @@ public class MainActivity extends Activity {
     private ImageButton momentButton;
     private ImageButton homeButton;
     private ImageButton settingButton;
+    private ListView eventListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +88,25 @@ public class MainActivity extends Activity {
     }
 
     private void initListLayoyt() {
+        eventListView = (ListView) findViewById(R.id.event);
+        eventListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, getData()));
+    }
 
+    private List<String> getData() {
+        List<String> data = new ArrayList<>();
+        data.add("碎片时间1");
+        data.add("碎片时间2");
+        data.add("碎片时间3");
+        data.add("碎片时间4");
+        data.add("碎片时间5");
+        data.add("碎片时间6");
+        data.add("碎片时间7");
+        data.add("碎片时间8");
+        data.add("碎片时间9");
+        data.add("碎片时间10");
+        data.add("碎片时间10");
+        data.add("碎片时间12");
+        return data;
     }
 
     private void initMainLayout() {
@@ -149,7 +177,15 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
-
+                    case R.id.setting:
+                        AlertDialog dialog = new AlertDialog.Builder(MainActivity.this).create();
+                        Window window = dialog.getWindow();
+                        window.setGravity(Gravity.BOTTOM);
+                        window.setWindowAnimations(R.style.dialog_anim_style);
+                        dialog.show();
+                        dialog.getWindow().setContentView(R.layout.custom_dialog);
+                        dialog.getWindow().setLayout(595, 375);
+                        break;
                 }
             }
         });
