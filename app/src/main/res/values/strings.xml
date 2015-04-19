@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Fragment</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title">碎片时间</string>
+</resources>
